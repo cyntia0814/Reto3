@@ -33,10 +33,12 @@ public class AudienceController {
         return audienceService.save(a);
     }
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public Audience update(@RequestBody Audience a){
         return audienceService.update(a);
     }
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int id){
         return audienceService.delete(id);
     }
