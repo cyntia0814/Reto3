@@ -27,7 +27,7 @@ public class AudienceService {
             return audienceRepository.save(a);
         }else{
             Optional<Audience> audiaux=audienceRepository.getAudience(a.getId());
-            if (audiaux.isEmpty()){
+            if (audiaux.isPresent()){
                 return audienceRepository.save(a);
             }else {
                 return a;
