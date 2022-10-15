@@ -1,5 +1,6 @@
 package com.ciclo3.reto3.services;
 
+import com.ciclo3.reto3.entities.Admin;
 import com.ciclo3.reto3.entities.Category;
 import com.ciclo3.reto3.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,32 @@ public class CategoryService {
             }else {
                 return c;
             }
+        }
+    }
+    public Category update(Category c) {
+        if (c.getId() != null) {
+            Optional<Category> cat = categoryRepository.getCategory(c.getId());
+            if (cat.isPresent()) {
+                Category oldCat = cat.get();
+                if (c.getName() != null) {
+                    oldCat.setName(c.getName());
+                }
+                if (c.getDescription() != null) {
+                    oldCat.setDescription(c.getDescription());
+                }
+                return categoryRepository.save(oldCat);
+            }
+        }
+        return c;
+    }
+
+    public boolean delete(int id) {
+        Optional<Category> Cate = categoryRepository.getCategory(id);
+        if (Cate.isPresent()) {
+            categoryRepository.delete(Cate.get());
+            return true;
+        } else {
+            return false;
         }
     }
 }

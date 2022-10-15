@@ -32,4 +32,13 @@ public class AdminController {
     public Admin save(@RequestBody Admin a){
         return adminService.save(a);
     }
+
+    @PutMapping("/update")
+    public Admin update(@RequestBody Admin a){
+        return adminService.update(a);
+    }
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int id){
+        return adminService.delete(id);
+    }
 }

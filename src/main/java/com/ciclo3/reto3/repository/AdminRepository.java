@@ -20,7 +20,12 @@ public class AdminRepository {
     public Optional<Admin> getAdmin (int id){
         return adminCrudRepository.findById(id);
     }
+
     public Admin save(Admin a){
         return adminCrudRepository.save(a);
+    }
+
+    public void delete(Admin a){
+        adminCrudRepository.delete(a);
     }
 }

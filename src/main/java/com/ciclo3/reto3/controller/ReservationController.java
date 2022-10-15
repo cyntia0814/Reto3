@@ -1,5 +1,6 @@
 package com.ciclo3.reto3.controller;
 
+import com.ciclo3.reto3.entities.Admin;
 import com.ciclo3.reto3.entities.Reservation;
 import com.ciclo3.reto3.services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,14 @@ public class ReservationController {
     @ResponseStatus(HttpStatus.CREATED)
     public Reservation save(@RequestBody Reservation r){
         return reservationService.save(r);
+    }
+
+    @PutMapping("/update")
+    public Reservation update(@RequestBody Reservation r){
+        return reservationService.update(r);
+    }
+    @DeleteMapping("/{idReservation}")
+    public boolean delete(@PathVariable("idReservation") int id){
+        return reservationService.delete(id);
     }
 }

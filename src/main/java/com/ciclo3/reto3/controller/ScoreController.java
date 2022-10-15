@@ -1,6 +1,7 @@
 package com.ciclo3.reto3.controller;
 
 
+import com.ciclo3.reto3.entities.Admin;
 import com.ciclo3.reto3.entities.Score;
 import com.ciclo3.reto3.services.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,14 @@ public class ScoreController {
     @ResponseStatus(HttpStatus.CREATED)
     public Score save(@RequestBody Score s){
         return scoreService.save(s);
+    }
+
+    @PutMapping("/update")
+    public Score update(@RequestBody Score s){
+        return scoreService.update(s);
+    }
+    @DeleteMapping("/{idScore}")
+    public boolean delete(@PathVariable("idScore") int id){
+        return scoreService.delete(id);
     }
 }

@@ -1,5 +1,6 @@
 package com.ciclo3.reto3.controller;
 
+import com.ciclo3.reto3.entities.Admin;
 import com.ciclo3.reto3.entities.Category;
 import com.ciclo3.reto3.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,13 @@ public class CategoryController {
     @ResponseStatus(HttpStatus.CREATED)
     public Category save(@RequestBody Category c){
         return categoryService.save(c);
+    }
+    @PutMapping("/update")
+    public Category update(@RequestBody Category c){
+        return categoryService.update(c);
+    }
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int id){
+        return categoryService.delete(id);
     }
 }

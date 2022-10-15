@@ -1,5 +1,6 @@
 package com.ciclo3.reto3.controller;
 
+import com.ciclo3.reto3.entities.Admin;
 import com.ciclo3.reto3.entities.Audience;
 import com.ciclo3.reto3.services.AudienceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,13 @@ public class AudienceController {
     @ResponseStatus(HttpStatus.CREATED)
     public Audience save(@RequestBody Audience a){
         return audienceService.save(a);
+    }
+    @PutMapping("/update")
+    public Audience update(@RequestBody Audience a){
+        return audienceService.update(a);
+    }
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int id){
+        return audienceService.delete(id);
     }
 }
